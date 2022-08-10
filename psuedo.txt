@@ -1,0 +1,20 @@
+Need:
+    -current weather
+        -city name 
+        -date
+        -an icon representation of weather conditions
+        -temperature
+        -humidity
+        -wind speed
+        -UV index
+            -color that indicates whether the conditions are favorable (green), moderate (orange), or severe (red)
+    -future weather 5 days
+        -date
+        -an icon representation of weather conditions
+        -temperature
+        -humidity
+        -wind speed
+WHEN I click on a city in the search history
+    -search bar
+        -save history (and it's updated of recent city that is input)
+
