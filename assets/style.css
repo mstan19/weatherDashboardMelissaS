@@ -2,7 +2,10 @@
     border: rgb(255, 192, 203) 1px solid;
 }
 
-/* aside {
-    margin-right: 20px;
-} */
+.websiteTitle {
+    text-align: center;
+}
 
+.card-body {
+    border-radius: 25px;
+}
