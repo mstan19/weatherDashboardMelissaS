@@ -13,15 +13,44 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <h1>Weather Dashboard</h1>
-    <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand">Weather Dashboard</a>
-      </nav>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+  <h1>Weather Dashboard</h1>
 
+  <div class="container-fluid">
+    <div class="row">
+      <main class="col">
+          <section class="greeting">
+            <h2>Welcome</h2>
+            <h3 id="currentDate"></h3>
+            <h3 id="currentTime"></h3>
+          </section>
+        
+
+
+          <section class="row card-deck mr-auto">
+            <div class="col-sm-2 card">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </section>
+      </main>
+
+      <aside class="col">
+        <form class="row align-self-end form-inline">
+          <input class="form-control ml-auto mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <br>
+        <div class="row align-self-end card ml-auto" id="currentweather" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
