@@ -8,32 +8,36 @@ var apiKey = "9ab552a07c2506fa3f4d0091eda74d54"
 var city;
 var searchHistoryEl = document.querySelector('#searchHistory');
 var cityInputEl = document.querySelector('#inputCity');
+var cityListEl = document.querySelector('#cityList');
+var cities = [];
+// var currentWindEl = document.querySelector('#wind');
 //console.log(fetch(queryURL));
 
-var formSubmitHandler = function (event) {
+$("#search").on("click", function(event){
     event.preventDefault();
-  
-    var city = cityInputEl.value.trim();
-  
-    if (city) {
-      getCity(city);
-  
-    //   repoContainerEl.textContent = '';
-      cityInputEl.value = '';
-    } else {
-      alert('Please Enter A City');
-    }
-  };
+    // if (city) {
+    //     getCity(city);
+    // cityInputEl.value = '';
+    // } else {
+    //   alert('Please Enter A City');
+    // }
 
-var getCity = function (city) {
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+    var userInput = $(this).parent().children(".userInput").val();
+
+    getCity(userInput);
+
+});
+
+
+var getCity = function (userInput) {
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=" + apiKey;
 
     fetch(queryURL)
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    displayCity(data, city);
-                    console.log(data);
+                    // displayCurrentWeather(data, city);
+                   // console.log(data);
                 });
             } else {
                 alert('Error: ' + response.statusText);
@@ -42,26 +46,56 @@ var getCity = function (city) {
         .catch(function (error) {
             alert('Unable to connect to the weather API');
     });
+
+    // displayCurrentWeather (city);
+    displaySeachHistory(userInput);
 };
 
-$(".btn").on("click", function(event){
-    event.preventDefault();
-    var userInput = $(this).parent().children(".userInput").val();
-    console.log(userInput);
-    var city = $(this).parent("#serach").text();
-    console.log(city);
-    localStorage.setItem("city", userInput);
+// function displayCurrentWeather (city) {
+//     currentWindEl.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
+// }
 
-    $("#serach").val(localStorage.getItem("city"));
+//creating the array of lists and adding them to the list
 
-});
+function displaySeachHistory(userInput) {
+    // cityListEl.innerHTML = "";
+    
+    //console.log(userInput);
 
+    
+   
+    cities.push(userInput);       
+    for (var i = 0; i < cities.length; i++) {
+      var city = cities[i];
+  
+      var li = document.createElement("li");
+      li.textContent = city;
+ 
+      searchHistoryEl.appendChild(li);
 
-//getCity("new york");
+    }
+    localStorage.setItem("city", JSON.stringify(cities));
+    var storedListofCities = JSON.parse(localStorage.getItem("city"));
+    
 
-// var displayCity = function (city) {
-//     if (city.length === 0) {
-//         searchHistoryEl.textContent = "No City found";
-//         return;
-//       } else {}
-// };
+//console.log(storedListofCities);
+
+  }
+ // var storedListofCities = JSON.parse(localStorage.getItem("city"));
+ //$("#cityList").textContent = (storedListofCities);
+// console.log(typeof(storedListofCities));
+//document.getElementById('#cityList').innerHTML = storedListofCities[0]['city'];
+// var storedListofCities = JSON.parse(localStorage.getItem("city"));
+// var btnSearchEl = document.createElement("button");
+// searchHistoryEl.textContent = storedListofCities;
+// storedListofCities.;
+
+// searchHistoryEl.setAttribute("data-city", storedListofCities)
+
+// searchHistoryEl.prepend(btnSearchEl);
+// var x = $("#cityList").text(storedListofCities[0]);
+// var x = $("#cityList").text(storedListofCities[1]);
+// var x = $("#cityList").text(storedListofCities[2]);
+// var x = $("#cityList").text(storedListofCities[3]);
+
+//console.log(storedListofCities[0]);
