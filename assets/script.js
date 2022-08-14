@@ -14,12 +14,10 @@ var cities = [];
 var userCityEl = document.querySelector('#userCity');
 var currentWindEl = document.querySelector('#windC');
 var currentTempEl = document.querySelector('#tempC');
+var currentUVindex = document.querySelector('#UVindexC');
 var currentHumidityEl = document.querySelector('#humidityC');
 var WeatherCondition = document.querySelector('#weatherCondition');
-var currentUVindex = document.querySelector('#UVindexC');
-var fiveWindEl = document.querySelector('.wind');
-var fiveTempEl = document.querySelector('.temp');
-var fiveHumidityEl = document.querySelector('.humidity');
+
 
 //console.log(fetch(queryURL));
 
@@ -82,10 +80,10 @@ var getCityStepTwo = function (lat, long) {
 
 
 function displayCurrentWeather (data) {
-    currentWindEl.innerHTML = "Wind: " + data.current.wind_speed + " MPH";
+    currentWindEl.innerHTML = "Wind: " + Math.round(data.current.wind_speed) + " MPH";
     var Ftemp = Math.round(((data.current.temp - 273.15) * 1.8 + 32));
-    currentTempEl.innerHTML = Ftemp + " degrees F";
-    currentHumidityEl.innerHTML = data.current.humidity + " %";
+    currentTempEl.innerHTML = "Temperature: " + Ftemp + " °F";
+    currentHumidityEl.innerHTML = "Humidity: " + data.current.humidity + " %";
 
     var UVindex = data.current.uvi
     currentUVindex.innerHTML = UVindex;
@@ -104,11 +102,22 @@ function displayCurrentWeather (data) {
 }
 
 function fiveDayWeather (data) {
+   
+    $("#date0").text(moment().add(1, 'days').format("MM-DD-YYYY"));
+    $("#date1").text(moment().add(2, 'days').format("MM-DD-YYYY"));
+    $("#date2").text(moment().add(3, 'days').format("MM-DD-YYYY"));
+    $("#date3").text(moment().add(4, 'days').format("MM-DD-YYYY"));
+    $("#date4").text(moment().add(5, 'days').format("MM-DD-YYYY"));
+
     for (let i = 0; i < 5; i++) {
-        fiveWindEl.innerHTML = data.daily[i].wind_speed + " MPH";
+        var fiveDayWindEl = $("#wind" + i);
+        var fiveDayTempEl = $("#temp" + i);
+        var fiveDayHumEl = $("#humidity" + i);
+        
+        fiveDayWindEl.text("Wind: " + Math.round(data.daily[i].wind_speed) + " MPH");
         var Ftemp = Math.round(((data.daily[i].temp.day - 273.15) * 1.8 + 32));
-        fiveTempEl.innerHTML = Ftemp + " deg F";
-        fiveHumidityEl.innerHTML = "Humidity: " + data.daily[i].humidity + " %";
+        fiveDayTempEl.text("Temp: " + Ftemp + " °F");
+        fiveDayHumEl.text("Humidity: " + data.daily[i].humidity + " %");
       }
 }
 
