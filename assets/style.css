@@ -1,11 +1,86 @@
 * {
-    border: rgb(255, 192, 203) 1px solid;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 }
+
+/* border: rgb(255, 192, 203) 1px solid; */
 
 .websiteTitle {
     text-align: center;
+    background-color: #4a2b9a;
+    color: beige;
+    font-size: 45px;
+    
 }
 
 .card-body {
-    border-radius: 25px;
+    background-color: #4a2b9a;
+    color: rgb(249, 244, 244);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#userCity {
+    text-align:left;
+    font-size: 40px;
+}
+
+h2,h5 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#search {
+    background-color: #2d2347;
+    color: white;
+}
+
+#inputCity {
+    font-size: 25px;
+}
+
+#fiveDayForecast {
+    justify-content: space-around;
+}
+
+.mainWeather {
+    background-color: white;
+    margin-left: 10px;
+}
+
+
+#currentweather {
+   margin-top: 15px;
+   border: 3px solid #4a2b9a;
+   padding: 10px;
+   font-size: 25px;
+}
+
+#titleSearch {
+    font-size:35px;
+    font-weight:bold;
+}
+
+#tileFive {
+    font-size: 35px;
+}
+
+.container-fluid {
+    background-color: #4a2b9a2d;
+    padding-bottom: 50px;
+}
+
+.topWebsite {
+    background-color: #4a2b9a2d;
+    border-bottom: 2 px solid;
+    padding: 40px;
+}
+
+.searching {
+    padding-bottom: 10px;
+    border-bottom: 3px solid #4a2b9a;
+}   
+
+.card-title {
+    padding-bottom: 10px;
+    border-bottom: 3px solid white;
 }

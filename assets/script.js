@@ -109,8 +109,6 @@ function fiveDayWeather (data) {
     $("#date3").text(moment().add(4, 'days').format("MM-DD-YYYY"));
     $("#date4").text(moment().add(5, 'days').format("MM-DD-YYYY"));
 
-    <img src='https://openweathermap.org/img/w/${a.daily[b].weather[0].icon}.png' alt="Weather icon" class="mx-auto"/>
-
     for (let i = 0; i < 5; i++) {
         var fiveDayWindEl = $("#wind" + i);
         var fiveDayTempEl = $("#temp" + i);
