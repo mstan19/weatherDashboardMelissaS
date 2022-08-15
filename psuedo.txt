@@ -18,3 +18,52 @@ WHEN I click on a city in the search history
     -search bar
         -save history (and it's updated of recent city that is input)
 
+
+
+[
+    atlanta
+    new york
+    nashville
+]
+
+// user searches for city
+// check if this list is greater than 10
+[
+    atlanta
+    new york
+    nashville
+    ...
+    KNOXVILLE  
+]
+// put back in lcoal storage
+// get from local storage
+[
+    atlanta
+    new york
+    nashville
+    KNOXVILLE  
+]
+// for each of these cities
+create btn and append to parent
+
+
+buttonClicked {
+    var previousCities = getLocalStorage
+    saveToLocalStorage
+    
+    display btn with limit
+
+
+}
+
+
+[atlanta, new york]
+
+innerHTML = ""
+
+<ul>
+    <li>atlanta</li>
+    <li>atlanta</li>
+    <li>new york</li>
+
+</ul>
