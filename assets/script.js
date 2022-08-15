@@ -16,7 +16,7 @@ var currentWindEl = document.querySelector('#windC');
 var currentTempEl = document.querySelector('#tempC');
 var currentUVindex = document.querySelector('#UVindexC');
 var currentHumidityEl = document.querySelector('#humidityC');
-var WeatherCondition = document.querySelector('#weatherCondition');
+var weatherCondition = document.querySelector('#weatherCondition');
 
 
 //console.log(fetch(queryURL));
@@ -101,7 +101,7 @@ function displayCurrentWeather (data) {
 }
 
 function fiveDayWeather (data) {
-   
+    console.log(data);
     $("#date0").text(moment().add(1, 'days').format("MM-DD-YYYY"));
     $("#date1").text(moment().add(2, 'days').format("MM-DD-YYYY"));
     $("#date2").text(moment().add(3, 'days').format("MM-DD-YYYY"));
@@ -112,7 +112,9 @@ function fiveDayWeather (data) {
         var fiveDayWindEl = $("#wind" + i);
         var fiveDayTempEl = $("#temp" + i);
         var fiveDayHumEl = $("#humidity" + i);
-        
+        var fiveDayweatherCon = $("#weatherCondition" + i);
+        console.log(fiveDayweatherCon);
+        fiveDayweatherCon.attr("src"," http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png")
         fiveDayWindEl.text("Wind: " + Math.round(data.daily[i].wind_speed) + " MPH");
         var Ftemp = Math.round(((data.daily[i].temp.day - 273.15) * 1.8 + 32));
         fiveDayTempEl.text("Temp: " + Ftemp + " °F");
