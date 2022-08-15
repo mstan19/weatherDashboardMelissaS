@@ -26,7 +26,7 @@ $("#search").on("click", function(event){
     var userInput = $(this).parent().children(".userInput").val();
 
     getCityStepOne(userInput);
-    //displayCurrentWeather(userInput);
+    displaySeachHistory(userInput);
 });
 
 
@@ -75,7 +75,6 @@ var getCityStepTwo = function (lat, long) {
             alert('Unable to connect to the weather API');
     });
 
-    //displaySeachHistory(userInput);
 };
 
 
@@ -123,32 +122,28 @@ function fiveDayWeather (data) {
 
 //creating the array of lists and adding them to the list
 function displaySeachHistory(userInput) {
-    cities.push(userInput);       
+       
+    cities.push(userInput); 
+    cityListEl.innerHTML = ""; 
+
     for (var i = 0; i < cities.length; i++) {
       var city = cities[i];
-      var li = document.createElement("li");
-      li.textContent = city;
-      searchHistoryEl.appendChild(li);
+      var btnHistories = document.createElement("button");
+      
+      btnHistories.textContent = city;
+      btnHistories.classList.add("col-12");
+      btnHistories.setAttribute("style", "width: 100%", "p-3");
+      cityListEl.appendChild(btnHistories);
+      btnHistories.setAttribute("onclick","getCityStepOne('"+city+"')");
+    //   var li = document.createElement("li");
+      
+    //   li.textContent = city;
+      
+    //   searchHistoryEl.appendChild(li);
     }
-
-    localStorage.setItem("city", JSON.stringify(cities));
+     
     var storedListofCities = JSON.parse(localStorage.getItem("city"));
+    localStorage.setItem("city", JSON.stringify(cities));
+    
+    
   }
- // var storedListofCities = JSON.parse(localStorage.getItem("city"));
- //$("#cityList").textContent = (storedListofCities);
-// console.log(typeof(storedListofCities));
-//document.getElementById('#cityList').innerHTML = storedListofCities[0]['city'];
-// var storedListofCities = JSON.parse(localStorage.getItem("city"));
-// var btnSearchEl = document.createElement("button");
-// searchHistoryEl.textContent = storedListofCities;
-// storedListofCities.;
-
-// searchHistoryEl.setAttribute("data-city", storedListofCities)
-
-// searchHistoryEl.prepend(btnSearchEl);
-// var x = $("#cityList").text(storedListofCities[0]);
-// var x = $("#cityList").text(storedListofCities[1]);
-// var x = $("#cityList").text(storedListofCities[2]);
-// var x = $("#cityList").text(storedListofCities[3]);
-
-//console.log(storedListofCities[0]);
