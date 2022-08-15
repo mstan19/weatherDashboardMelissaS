@@ -124,28 +124,37 @@ function fiveDayWeather (data) {
 
 //creating the array of lists and adding them to the list
 function displaySeachHistory(userInput) {
-       
-    cities.push(userInput); 
+        
     cityListEl.innerHTML = ""; 
+    cities = JSON.parse(localStorage.getItem("city"));
+    
+    if (cities === null || cities === undefined) {
+        cities =  [];
+    }
+
+    if (userInput !== null && userInput !== undefined) {
+        console.log(userInput);
+        cities.push(userInput); 
+    } 
+
 
     for (var i = 0; i < cities.length; i++) {
-      var city = cities[i];
-      var btnHistories = document.createElement("button");
-      
-      btnHistories.textContent = city;
-      btnHistories.classList.add("col-12");
-      btnHistories.setAttribute("style", "width: 100%", "p-3");
-      cityListEl.appendChild(btnHistories);
-      btnHistories.setAttribute("onclick","getCityStepOne('"+city+"')");
-    //   var li = document.createElement("li");
-      
-    //   li.textContent = city;
-      
-    //   searchHistoryEl.appendChild(li);
-    }
-     
-    var storedListofCities = JSON.parse(localStorage.getItem("city"));
+        var city = cities[i];
+        var btnHistories = document.createElement("button");
+        
+        btnHistories.textContent = city;
+        btnHistories.classList.add("col-12");
+        btnHistories.setAttribute("style", "width: 100%", "p-3");
+        cityListEl.appendChild(btnHistories);
+        btnHistories.setAttribute("onclick","getCityStepOne('"+city+"')");
+        
+      }
+
+
     localStorage.setItem("city", JSON.stringify(cities));
     
-    
   }
+displaySeachHistory();
+
+
+
