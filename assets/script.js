@@ -29,7 +29,7 @@ $("#search").on("click", function(event){
     displaySeachHistory(userInput);
 });
 
-
+//this function calls the GeoCoding database
 var getCityStepOne = function (userInput) {
     var queryURLGeoCode = "https://api.openweathermap.org/geo/1.0/direct?q=" + userInput + "&limit=1&appid=" + GeoCodeAPIkey;
 
@@ -53,7 +53,7 @@ var getCityStepOne = function (userInput) {
             alert('Unable to connect to the weather GeoCode API ');
     });
 };
-
+//Goal: call this function to run the second API databash. This fucntion will use the lat and long from GeoCoding API.
 var getCityStepTwo = function (lat, long) {
    
     var queryURLfree = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + long + "&exclude=&appid=" + apiKey;
@@ -77,7 +77,7 @@ var getCityStepTwo = function (lat, long) {
 
 };
 
-
+//Goal: this function is to display the current weather of the city that was serached.
 function displayCurrentWeather (data) {
     currentWindEl.innerHTML = "Wind: " + Math.round(data.current.wind_speed) + " MPH";
     var Ftemp = Math.round(((data.current.temp - 273.15) * 1.8 + 32));
@@ -99,6 +99,8 @@ function displayCurrentWeather (data) {
     //console.log(userInput);
     fiveDayWeather(data);
 }
+
+//Goal: this function is to display the five-day forecast of the city that was serached. Need a for loop so we don't have to manually retrieve the data.
 
 function fiveDayWeather (data) {
     console.log(data);
@@ -122,7 +124,7 @@ function fiveDayWeather (data) {
       }
 }
 
-//creating the array of lists and adding them to the list
+//creating the array of lists and adding them to the list. Created the buttons of the previous cities that was researched. Btns will still appear after the age is refreshed.
 function displaySeachHistory(userInput) {
         
     cityListEl.innerHTML = ""; 
